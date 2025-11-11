@@ -56,5 +56,6 @@ gdp_df["GDP (Million USD)"] = np.round(gdp_df["GDP (Million USD)"], 2)
 #Renombrar la columna
 gdp_df.rename(columns={"GDP (Million USD)": "GDP (Billion USD)"}, inplace=True)
 
-# Mostrar resultado final
+#Mostrar resultado final
 print(gdp_df)
+ gdp_df.to_csv('./Largest_economies.csv')
