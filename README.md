@@ -1,4 +1,4 @@
-# Gross-domestic-product-project-on-python
+#Gross-domestic-product-project-on-python
 El proyecto extrae y analiza datos del PIB mundial desde una página web usando Pandas. Se selecciona la tabla del FMI, se limpian los datos para conservar país y PIB, y se convierten los valores de millones a miles de millones con NumPy. El resultado es una tabla ordenada con los principales países por PIB, lista para análisis o visualización.
 Gross-domestic-product-project-on-python
 El proyecto extrae y analiza datos del PIB mundial desde una página web usando Pandas. Se selecciona la tabla del FMI, se limpian los datos para conservar país y PIB, y se convierten los valores de millones a miles de millones con NumPy. El resultado es una tabla ordenada con los principales países por PIB, lista para análisis o visualización.
@@ -11,7 +11,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 #exatrae informacion de la pagina web usando web scraping
-# get te perimite obtener la "respuesta" y tenerla en tu servidor que en este caso es tu compuetador
+#get te perimite obtener la "respuesta" y tenerla en tu servidor que en este caso es tu compuetador
 URL = "https://web.archive.org/web/20230902185326/https://en.wikipedia.org/wiki/List_of_countries_by_GDP_%28nominal%29"
 response = requests.get(URL)
 soup = BeautifulSoup(response.text, "html.parser")
@@ -35,11 +35,11 @@ gdp_df.columns = ["Country", "GDP (Million USD)"]
 print(gdp_df)
 #tareas: # Change the data type of the 'GDP (Million USD)' column to integer. Use astype() method.
 
-# Convert the GDP value in Million USD to Billion USD
+#Convert the GDP value in Million USD to Billion USD
 
-# Use numpy.round() method to round the value to 2 decimal places.
+#Use numpy.round() method to round the value to 2 decimal places.
 
-# Rename the column header from 'GDP (Million USD)' to 'GDP (Billion USD)'
+#Rename the column header from 'GDP (Million USD)' to 'GDP (Billion USD)'
 
 gdp_df = pd.DataFrame({
     "Country": ["United States", "China", "Japan", "Germany", "India", "United Kingdom", "France", "Italy","Canada", "Brazil"],
@@ -47,13 +47,13 @@ gdp_df = pd.DataFrame({
 ]
 })
 
-# Convertir de millones a miles de millones (billions)
+#Convertir de millones a miles de millones (billions)
 gdp_df["GDP (Million USD)"] = gdp_df["GDP (Million USD)"].astype(float) / 1000
 
-#  Redondear a 2 decimales con NumPy
+#Redondear a 2 decimales con NumPy
 gdp_df["GDP (Million USD)"] = np.round(gdp_df["GDP (Million USD)"], 2)
 
-#  Renombrar la columna
+#Renombrar la columna
 gdp_df.rename(columns={"GDP (Million USD)": "GDP (Billion USD)"}, inplace=True)
 
 # Mostrar resultado final
